@@ -1,10 +1,9 @@
-
+// cards/deck selected
 const pics = ["anchor", "anchor", "bolt", "bolt", "bomb", "bomb", "bicycle", "bicycle", "cube", "cube", "diamond", "diamond", "leaf", "leaf", "paper-plane-o", "paper-plane-o"];
 const deck = document.querySelector(".deck");
 const cards = document.querySelectorAll(".card");
 
 const opened = document.getElementsByClassName("open");
-
 const matchedCards = document.getElementsByClassName("match");
 let matched = [];
 
@@ -27,10 +26,10 @@ const timeScore = document.getElementById("time-score");
 
 reset();
 startGame();
+cardOpen();
 
 
-
-//event listeners
+//event listeners for buttons
 
 play.addEventListener("click", function () {
     reset();
@@ -47,18 +46,12 @@ restart.addEventListener("click", function () {
 function startGame() {
     shuffle(pics);
     makeCard();
-    grad();
-    cardOpen();
+    gradient();
 }
-
-
-function grad() {
-    deck.style.background = newGradient();
-}
-
 
 function reset() {
     moves = 0;
+    movesCount.innerText = "0"
     matched = [];
     starsReset();
     clearInterval(tm);
@@ -67,8 +60,6 @@ function reset() {
     for (var i = 0; i < cards.length; i++) {
         cards[i].innerHTML = "";
         cards[i].className = "card";
-        moves = 0;
-        movesCount.innerText = "0";
     }
 }
 
@@ -98,53 +89,56 @@ function shuffle(array) {
 }
 
 function time() {
-        sec += 1;
-        seconds.innerText = sec;
-        if (sec < 10) {
-            seconds.innerText = "0" + sec;
+    sec += 1;
+    seconds.innerText = sec;
+    if (sec < 10) {
+        seconds.innerText = "0" + sec;
+    }
+    if (sec == 60) {
+        min += 1;
+        sec = 0;
+        seconds.innerText = "00";
+        minutes.innerText = min;
+        if (min < 10) {
+            minutes.innerText = "0" + min;
         }
-        if (sec == 60) {
-            min += 1;
-            sec = 0;
-            seconds.innerText = "00";
-            minutes.innerText = min;
-            if (min < 10) {
-                minutes.innerText = "0" + min;
-//                timeScore.innerText = min + ":" + sec;
-            }
-        }
+    }
     if (min > 0) {
         timeScore.innerText = `${min} m ${sec} s`;
     } else {
         timeScore.innerText = `${sec} s`;
     }
-    
-    };
 
-var tm; 
+};
 
 
+
+var tm;
 function startTime() {
     tm = setInterval(time, 1000);
 }
+
 
 function clearTime() {
     sec = 0;
     min = 0;
     seconds.innerText = "00";
-            minutes.innerText = "00";
+    minutes.innerText = "00";
 }
 
 
 function cardOpen() {
     for (var i = 0; i < cards.length; i++) {
-        cards[i].addEventListener("click", function(e) {
+        cards[i].addEventListener("click", function (e) {
+
             if (moves == 0) {
                 startTime();
             }
             if (this.className !== "card match" && opened.length != 2) {
                 this.className = "card open show";
+
                 countMoves();
+
                 if (opened.length == 2) {
                     if (opened[1].innerHTML === opened[0].innerHTML) {
 
@@ -207,6 +201,7 @@ function starsReset() {
     }
 }
 
+// generates random gradient
 
 function newGradient() {
     let d = Math.floor(Math.random() * 361);
@@ -221,4 +216,10 @@ function newGradient() {
     let col1 = `rgba( ${r1}, ${g1}, ${b1}, ${a1})`;
     let col2 = `rgba( ${r2}, ${g2}, ${b2}, ${a2})`;
     return `linear-gradient(${d}deg, ${col1}, ${col2})`;
+}
+
+// applies generated gradient
+
+function gradient() {
+    deck.style.background = newGradient();
 }
