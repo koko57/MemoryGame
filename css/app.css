@@ -39,9 +39,15 @@ h1 {
  */
 
 .deck {
+/*
     width: 660px;
     height: 680px;
-    padding: 32px;
+*/
+    
+    height: 515px;
+    width: 500px;
+/*    padding: 32px;*/
+    padding: 25px;
     border-radius: 10px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
     display: flex;
@@ -52,8 +58,13 @@ h1 {
 }
 
 .deck .card {
+/*
     height: 125px;
     width: 125px;
+*/
+    
+    height: 98px;
+    width: 98px;
     background: #2e3d49;
     font-size: 0;
     color: #ffffff;
@@ -75,14 +86,14 @@ h1 {
 }
 
 .deck .card.show {
-    font-size: 33px;
+    font-size: 28px;
 }
 
 .deck .card.match {
     transform: rotateY(0);
     cursor: default;
     background: #02ccba;
-    font-size: 33px;
+    font-size: 28px;
 
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
     animation: jump 0.5s ease-in-out;
@@ -114,10 +125,6 @@ h1 {
 }
 
 .score-panel .stars {
-/*
-    margin: 0;
-    padding: 0;
-*/
     display: inline-block;
     margin: 0 5px 0 0;
 }
@@ -129,7 +136,6 @@ h1 {
 }
 
 .score-panel .restart {
-    /*    float: right;*/
     cursor: pointer;
     transition: 0.2s ease-in-out;
     position: relative;
@@ -139,20 +145,13 @@ h1 {
 }
 
 .score-panel .timer {
-      border: 3px solid black;
+    border: 3px solid black;
     border-radius: 30px;
     padding: 10px 20px;
     width: 100px;
-/*    text-align: center;*/
     
 }
 
-
-
-
-
-
-/*.score-panel .restart */
 
 .score-panel .restart i {
     margin-left: 5px;
@@ -174,17 +173,7 @@ h1 {
 
 }
 
-/*
-
-.score-panel .timer {
-    display: flex;
-    justify-content: space-between;
-}
-*/
-
-
-
-.end {
+.end-panel {
     width: 480px;
     height: 480px;
     position: absolute;
@@ -198,13 +187,13 @@ h1 {
     text-align: center;
 }
 
-.end h2 {
+.end-panel h2 {
     font-family: 'Pacifico', cursive;
     font-weight: normal;
 }
 
 
-.end .stars {
+.end-panel .stars {
     text-align: center;
     padding: 10px;
     width: 200px;
@@ -213,7 +202,7 @@ h1 {
     margin: 10px auto;
 }
 
-.end .play-again {
+.end-panel .play-again {
     margin: 30px auto;
     border: 3px solid white;
     border-radius: 40px;
@@ -223,18 +212,18 @@ h1 {
     position: relative;
 }
 
-.end .play-again:hover {
+.end-panel .play-again:hover {
     box-shadow: 2px 3px 5px 0 rgba(250, 250, 250, 0.3);
 }
 
-.end .play-again:active {
+.end-panel .play-again:active {
     box-shadow: 2px 1px 5px 0 rgba(250, 250, 250, 0.3);
     top: 2px;
 }
 
 
 
-.end p {
+.end-panel p {
     margin-top: 10px;
     font-size: 0.7em;
 }
@@ -292,3 +281,114 @@ h1 {
         transform: translateY(0);
     }
 }
+
+
+
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 3.2em;
+    }
+    
+    
+    .deck {
+        width: 90vw;
+        height: 95vw;
+        padding: 22px;
+    }
+    
+    .deck .card {
+        height: 21%;
+        width: 22%;
+        margin: 1px;
+    }
+    
+    .deck .card.show, .deck .card.match
+    {
+        font-size: 24px;
+    }
+    
+    .score-panel {
+        width: 80vw;
+        font-size: 1.2em;
+    }
+    .restart span,
+    .score .stars 
+     {
+        display: none;
+    }
+    
+    .score {
+        width: 150px;
+        justify-content: space-around;
+    }
+    
+    .score-panel .timer {
+        width: 100px;
+        padding: 10px 0;
+        text-align: center;
+    }
+    
+    
+    .score-panel .restart {
+        width: 55px;
+    }
+    .score-panel .restart i {
+        margin-left: -3px;
+    }
+    
+    
+    
+}
+
+
+@media screen and (max-width: 450px) {
+    
+     h1 {
+        font-size: 2.75em;
+    }
+    
+    
+    
+    .score-panel {
+        width: 80vw;
+        font-size: 1em;
+    }
+    .score {
+        width: 120px; 
+    }
+    .score-panel .restart {
+        width: 50px;
+    }
+    
+}
+
+
+
+@media screen and (min-height: 901px) {
+      .deck {
+        width: 660px;
+        height: 680px;
+        padding: 32px;
+    }
+    
+    .deck .card {
+        height: 125px;
+        width: 125px;
+        
+    }
+    
+    .deck .card.show,
+    .deck .card.match
+    {
+        font-size: 35px;
+    }
+    
+    
+}
+
+
+
+
+
+
+

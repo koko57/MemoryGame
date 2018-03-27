@@ -7,14 +7,13 @@ const opened = document.getElementsByClassName("open");
 const matchedCards = document.getElementsByClassName("match");
 let matched = [];
 
-
 const restart = document.querySelector(".restart");
 const play = document.querySelector(".play-again");
 
 const movesCount = document.querySelector(".moves");
 let moves = 0;
 
-const endPanel = document.querySelector(".end");
+const endPanel = document.querySelector(".end-panel");
 
 const stars = document.querySelectorAll(".fa-star");
 const timer = document.querySelector(".timer");
@@ -22,6 +21,7 @@ const minutes = document.getElementById("min");
 const seconds = document.getElementById("sec");
 let sec = 0;
 let min = 0;
+let tm;
 const timeScore = document.getElementById("time-score");
 
 reset();
@@ -63,7 +63,7 @@ function reset() {
     }
 }
 
-
+// append icon to the card
 function makeCard() {
     for (var i = 0; i < pics.length; i++) {
         var icon = document.createElement("i");
@@ -75,7 +75,7 @@ function makeCard() {
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length,
+    let currentIndex = array.length,
         temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
@@ -110,14 +110,13 @@ function time() {
     }
 
 };
+// tm - id given to clear interval function
 
-
-
-var tm;
 function startTime() {
     tm = setInterval(time, 1000);
 }
 
+// stops timer when game ends or restarts
 
 function clearTime() {
     sec = 0;
@@ -126,20 +125,24 @@ function clearTime() {
     minutes.innerText = "00";
 }
 
-
 function cardOpen() {
     for (var i = 0; i < cards.length; i++) {
         cards[i].addEventListener("click", function (e) {
-
+            
+            // first click starts the timer
             if (moves == 0) {
                 startTime();
             }
+            //check if card is not already matched
             if (this.className !== "card match" && opened.length != 2) {
                 this.className = "card open show";
-
+                
+                //start counting moves
                 countMoves();
 
+                //check if 2 cards are opened
                 if (opened.length == 2) {
+                    //check if cards are matching
                     if (opened[1].innerHTML === opened[0].innerHTML) {
 
                         setTimeout(function () {
@@ -169,12 +172,14 @@ function cardOpen() {
                     }
                 }
             } else {
+                // prevents matched cards for being re-opened
                 e.preventDefault();
             }
         });
     }
 }
 
+// counts moves and displays stars score
 function countMoves() {
     moves += 1;
     movesCount.innerText = moves;
@@ -201,8 +206,7 @@ function starsReset() {
     }
 }
 
-// generates random gradient
-
+// generate random gradient
 function newGradient() {
     let d = Math.floor(Math.random() * 361);
     let r1 = Math.floor(Math.random() * 256);
@@ -218,8 +222,7 @@ function newGradient() {
     return `linear-gradient(${d}deg, ${col1}, ${col2})`;
 }
 
-// applies generated gradient
-
+// apply generated gradient
 function gradient() {
     deck.style.background = newGradient();
 }
