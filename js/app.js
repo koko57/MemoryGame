@@ -2,25 +2,26 @@
 const pics = ["anchor", "anchor", "bolt", "bolt", "bomb", "bomb", "bicycle", "bicycle", "cube", "cube", "diamond", "diamond", "leaf", "leaf", "paper-plane-o", "paper-plane-o"];
 const deck = document.querySelector(".deck");
 const cards = document.querySelectorAll(".card");
-
+// opened and matched cards selectors
 const opened = document.getElementsByClassName("open");
 const matchedCards = document.getElementsByClassName("match");
 let matched = [];
-
+// buttons selectors
 const restart = document.querySelector(".restart");
 const play = document.querySelector(".play-again");
 
 const movesCount = document.querySelector(".moves");
 let moves = 0;
+const stars = document.querySelectorAll(".fa-star");
 
 const endPanel = document.querySelector(".end-panel");
-
-const stars = document.querySelectorAll(".fa-star");
+// timer components selectors
 const timer = document.querySelector(".timer");
 const minutes = document.getElementById("min");
 const seconds = document.getElementById("sec");
 let sec = 0;
 let min = 0;
+// tm - id given to clear interval function
 let tm;
 const timeScore = document.getElementById("time-score");
 
@@ -72,7 +73,6 @@ function makeCard() {
     }
 }
 
-
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     let currentIndex = array.length,
@@ -109,15 +109,13 @@ function time() {
         timeScore.innerText = `${sec} s`;
     }
 
-};
-// tm - id given to clear interval function
+}
 
 function startTime() {
     tm = setInterval(time, 1000);
 }
 
-// stops timer when game ends or restarts
-
+// stop timer when game ends or restarts
 function clearTime() {
     sec = 0;
     min = 0;
@@ -128,7 +126,7 @@ function clearTime() {
 function cardOpen() {
     for (var i = 0; i < cards.length; i++) {
         cards[i].addEventListener("click", function (e) {
-            
+
             // first click starts the timer
             if (moves == 0) {
                 startTime();
@@ -136,13 +134,13 @@ function cardOpen() {
             //check if card is not already matched
             if (this.className !== "card match" && opened.length != 2) {
                 this.className = "card open show";
-                
+
                 //start counting moves
                 countMoves();
 
-                //check if 2 cards are opened
+                // check if 2 cards are opened
                 if (opened.length == 2) {
-                    //check if cards are matching
+                    // check if cards are matching
                     if (opened[1].innerHTML === opened[0].innerHTML) {
 
                         setTimeout(function () {
@@ -159,6 +157,7 @@ function cardOpen() {
                         }, 1000);
 
                     } else {
+
                         setTimeout(function () {
                             for (var j = 1; j >= 0; j--) {
                                 opened[j].className = "card open show unmatched";
@@ -172,14 +171,14 @@ function cardOpen() {
                     }
                 }
             } else {
-                // prevents matched cards for being re-opened
+                // prevent matched cards for being re-opened
                 e.preventDefault();
             }
         });
     }
 }
 
-// counts moves and displays stars score
+// count moves and display stars score
 function countMoves() {
     moves += 1;
     movesCount.innerText = moves;
@@ -199,7 +198,7 @@ function countMoves() {
     }
 }
 
-
+// stars-score resert
 function starsReset() {
     for (let i = 0; i < stars.length; i++) {
         stars[i].className = "fa fa-star";

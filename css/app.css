@@ -34,9 +34,7 @@ h1 {
     font-size: 4em;
 }
 
-/*
- * Styles for the deck of cards
- */
+/*** Styles for the deck of cards ***/
 
 .deck {
     height: 515px;
@@ -56,7 +54,7 @@ h1 {
     width: 98px;
     background: #2e3d49;
     font-size: 0;
-    color: #ffffff;
+    color: #fff;
     border-radius: 8px;
     cursor: pointer;
     display: flex;
@@ -92,9 +90,7 @@ h1 {
     animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
 }
 
-/*
- * Styles for the Score Panel
- */
+/*** Styles for the Score Panel ***/
 
 .score-panel {
     width: 500px;
@@ -159,18 +155,15 @@ h1 {
     box-shadow: 2px 1px 5px 0 rgba(46, 61, 73, 0.2);
 }
 
-/*
-* Styles for the End Panel
-*/
+/*** Styles for the End Panel ***/
 
 .end-panel {
     width: 480px;
     height: 480px;
     position: absolute;
-    top: 200px;
+    top: 250px;
     padding: 50px;
-/*    visibility: hidden;*/
-    visibility: visible;
+    visibility: hidden;
     background: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     color: #fff;
@@ -217,9 +210,7 @@ h1 {
     font-size: 0.7em;
 }
 
-/*
-* Keyframes
-*/
+/*** Keyframes ***/
 
 @keyframes shake {
     10%,
@@ -268,9 +259,28 @@ h1 {
     }
 }
 
-/*
-* Media queries
-*/
+/*** Media queries ***/
+
+/* bigger deck for bigger screens */
+
+@media screen and (min-height: 901px) {
+    .deck {
+        width: 660px;
+        height: 680px;
+        padding: 32px;
+    }
+
+    .deck .card {
+        height: 125px;
+        width: 125px;
+    }
+
+    .deck .card.show,
+    .deck .card.match {
+        font-size: 35px;
+    }
+}
+
 
 @media screen and (max-width: 600px) {
     h1 {
@@ -317,6 +327,7 @@ h1 {
     .score-panel .restart {
         width: 55px;
     }
+
     .score-panel .restart i {
         margin-left: -3px;
     }
@@ -327,8 +338,6 @@ h1 {
         padding: 50px;
         font-size: 2em;
     }
-
-
 }
 
 
@@ -350,46 +359,16 @@ h1 {
     .score-panel .restart {
         width: 50px;
     }
-    
+
     .end-panel {
+        padding: 30px;
         width: 80vw;
         height: 85vw;
         font-size: 1.75em;
     }
+
     .end-panel .play-again {
-    width: 150px;
-    margin: 20px 0 10px 0;
-/*
-    border: 3px solid white;
-    border-radius: 40px;
-    padding: 15px 30px;
-    font-size: 0.6em;
-    cursor: pointer;
-    position: relative;
-*/
-}
-
-
-}
-
-
-
-@media screen and (min-height: 901px) {
-    .deck {
-        width: 660px;
-        height: 680px;
-        padding: 32px;
+        width: 150px;
+        margin: 20px auto 10px auto;
     }
-
-    .deck .card {
-        height: 125px;
-        width: 125px;
-    }
-
-    .deck .card.show,
-    .deck .card.match {
-        font-size: 35px;
-    }
-
-
 }
