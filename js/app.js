@@ -135,10 +135,7 @@ function cardOpen() {
             if (this.className !== "card match" && this.className !== "card open show" && opened.length != 2) {
                 //start counting moves
                 countMoves();
-
-                
                 this.className = "card open show";
-
                 
                 // check if 2 cards are opened
                 if (opened.length == 2) {
