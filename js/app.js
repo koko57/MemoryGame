@@ -52,7 +52,7 @@ function startGame() {
 
 function reset() {
     moves = 0;
-    movesCount.innerText = "0"
+    movesCount.innerText = "0";
     matched = [];
     starsReset();
     clearInterval(tm);
@@ -128,16 +128,18 @@ function cardOpen() {
         cards[i].addEventListener("click", function (e) {
 
             // first click starts the timer
-            if (moves == 0) {
+            if (moves === 0) {
                 startTime();
             }
             //check if card is not already matched
-            if (this.className !== "card match" && opened.length != 2) {
-                this.className = "card open show";
-
+            if (this.className !== "card match" && this.className !== "card open show" && opened.length != 2) {
                 //start counting moves
                 countMoves();
 
+                
+                this.className = "card open show";
+
+                
                 // check if 2 cards are opened
                 if (opened.length == 2) {
                     // check if cards are matching
@@ -187,13 +189,9 @@ function countMoves() {
             stars[2].className = "fa fa-star-o";
             stars[5].className = "fa fa-star-o";
             break;
-        case 45:
+        case 49:
             stars[1].className = "fa fa-star-o";
             stars[4].className = "fa fa-star-o";
-            break;
-        case 57:
-            stars[0].className = "fa fa-star-o";
-            stars[3].className = "fa fa-star-o";
             break;
     }
 }
