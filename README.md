@@ -2,13 +2,22 @@
 
 ## Table of Contents
 
-* [About the game](#aboutthegame)
+* [About the Game](#aboutthegame)
+* [Installation](#installation)
 * [Instructions](#instructions)
+* [Code Dependencies](#codedependencies)
 * [Contributing](#contributing)
 
 
-## About the game
+## About the Game
+
 This is a classic memory game \(a.k.a "concentration"\). The Player \(You\) wins if all the cards are matched. You will be awarded 3, 2 or 1 star depending how many moves you make. The time is not rated for now \(we\'re not that harsh, but beware! - we\'ll add this feature later ;\) \)
+
+
+## Installation
+
+To install the game clone this repo and open index.html in your browser.
+
 
 ## Instructions
 
@@ -17,6 +26,19 @@ As you click the very first card the timer goes on and your clicks \(here called
 Feature: every time you start a new game the deck turns its color!
 
 If you\'re not pleased with the deck\'s color or just want a fresh start - you can hit the Restart button and enjoy a new game. 
+
+
+## Code Dependencies
+
+* fonts used in project: Pacifico, Coda from Google Fonts
+    https://fonts.googleapis.com/css?family=Pacifico
+    https://fonts.googleapis.com/css?family=Coda
+  
+* shuffle function from http://stackoverflow.com/a/2450976
+
+* font-awesome for card icons https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css
+
+
 
 ## Contributing
 
