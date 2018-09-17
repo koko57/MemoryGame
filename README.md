@@ -18,6 +18,8 @@ This is a classic memory game \(a.k.a "concentration"\). The Player \(You\) wins
 
 To install the game clone this repo and open index.html in your browser.
 
+Live version: https://koko57.github.io/MemoryGame/
+
 
 ## Instructions
 
